@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Other Company — Propuesta de rediseño</title>
+<meta name="description" content="Servicios administrativos en Santo Domingo: estructuración empresarial, gestión contable y gestión de recursos humanos.">
+<meta property="og:title" content="Other Company — Nueva web (propuesta)">
+<meta property="og:description" content="Vista previa del rediseño propuesto para othercompany.site">
+<meta property="og:image" content="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0c0c0f; --char:#16161b; --ink:#15151a; --muted:#666675; --line:#e8e6ee; --soft:#f6f4f8;
+  --mag:#b0158f; --mag-2:#d62fae; --mag-soft:#fbe8f6; --white:#fff; --radius:20px;
+  --shadow:0 24px 60px -24px rgba(12,12,15,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:Sora,sans-serif;line-height:1.1;letter-spacing:-.02em}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.kicker{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mag);display:inline-flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:8px;height:8px;border-radius:50%;border:2px solid currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:12px;font-weight:600;transition:.25s;border:0;cursor:pointer;font-size:.98rem}
+.btn-mag{background:var(--mag);color:#fff}
+.btn-mag:hover{background:var(--mag-2);transform:translateY(-2px)}
+.btn-out{border:1.5px solid rgba(255,255,255,.3);color:#fff}
+.btn-out:hover{background:rgba(255,255,255,.08)}
+section{padding:100px 0}
+.sec-head{max-width:660px;margin-bottom:54px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.1rem);margin:16px 0 14px}
+.sec-head p{color:var(--muted);font-size:1.06rem}
+.center{text-align:center;margin-inline:auto}
+
+.ribbon{background:var(--mag);color:#fff;text-align:center;font-size:.8rem;font-weight:600;padding:8px 16px}
+.ribbon a{text-decoration:underline;margin-left:6px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(12,12,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo img{height:40px;width:auto}
+.nav ul{display:flex;gap:32px;list-style:none}
+.nav ul a{color:rgba(255,255,255,.75);font-size:.95rem;font-weight:500}
+.nav ul a:hover{color:#fff}
+.nav .btn{padding:11px 20px;font-size:.9rem}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:24px;height:2px;background:#fff;margin:5px auto;transition:.3s}
+.mobile-menu{display:none}
+
+/* hero */
+.hero{background:var(--black);color:#fff;position:relative;overflow:hidden;padding:0}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:640px}
+.hero-text{padding:90px 50px 90px 0;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);margin:22px 0 22px}
+.hero h1 span{color:var(--mag-2)}
+.hero p{color:rgba(255,255,255,.7);font-size:1.12rem;max-width:520px;margin-bottom:36px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img{position:relative;margin-right:calc((100vw - min(1180px,100vw - 32px))/-2)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--black) 0%,rgba(12,12,15,.2) 35%,transparent 70%);z-index:1}
+.o-ring{position:absolute;width:520px;height:520px;border-radius:50%;border:70px solid var(--mag);opacity:.12;left:-200px;bottom:-260px}
+.hero-badges{display:flex;gap:28px;margin-top:44px;flex-wrap:wrap}
+.hero-badges div{font-size:.9rem;color:rgba(255,255,255,.65)}
+.hero-badges b{display:block;font-family:Sora;font-size:1.8rem;color:#fff}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:-56px;position:relative;z-index:2;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.pillar{padding:32px 30px;border-right:1px solid var(--line);display:flex;gap:16px;align-items:flex-start}
+.pillar:last-child{border-right:0}
+.pillar .ic{flex:none;width:48px;height:48px;border-radius:12px;background:var(--mag-soft);color:var(--mag);display:grid;place-items:center;font-size:1.3rem}
+.pillar h3{font-size:1.08rem;margin-bottom:4px}
+.pillar p{color:var(--muted);font-size:.92rem}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;display:flex;flex-direction:column;transition:.3s;background:#fff;position:relative}
+.svc:hover{border-color:var(--mag);box-shadow:var(--shadow);transform:translateY(-6px)}
+.svc.feat{background:var(--black);color:#fff;border-color:var(--black)}
+.svc.feat p,.svc.feat li{color:rgba(255,255,255,.7)}
+.svc .pop{position:absolute;top:-13px;right:24px;background:var(--mag);color:#fff;font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.04em}
+.svc .ic{width:56px;height:56px;border-radius:14px;background:var(--mag-soft);color:var(--mag);display:grid;place-items:center;font-size:1.5rem;margin-bottom:24px}
+.svc.feat .ic{background:rgba(214,47,174,.18)}
+.svc h3{font-size:1.4rem;margin-bottom:10px}
+.svc p{color:var(--muted);margin-bottom:20px}
+.svc ul{list-style:none;display:grid;gap:9px;margin-bottom:26px}
+.svc li{display:flex;gap:10px;font-size:.94rem;color:var(--ink)}
+.svc li::before{content:"✓";color:var(--mag-2);font-weight:700}
+.price{margin-top:auto;padding-top:22px;border-top:1px solid var(--line);display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.svc.feat .price{border-color:rgba(255,255,255,.15)}
+.price small{display:block;font-size:.8rem;color:var(--muted)}
+.svc.feat .price small{color:rgba(255,255,255,.6)}
+.price b{font-family:Sora;font-size:1.9rem}
+.price b sup{font-size:.9rem;margin-right:3px}
+.price a{width:46px;height:46px;border-radius:12px;background:var(--mag);color:#fff;display:grid;place-items:center;font-size:1.2rem;transition:.25s}
+.price a:hover{background:var(--mag-2)}
+.note{text-align:center;color:var(--muted);font-size:.9rem;margin-top:26px}
+
+/* about */
+.about{background:var(--soft)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.photo{border-radius:24px;overflow:hidden;aspect-ratio:5/4;position:relative}
+.photo img{width:100%;height:100%;object-fit:cover}
+.years{position:absolute;right:20px;bottom:20px;background:var(--mag);color:#fff;border-radius:18px;padding:18px 22px;text-align:center}
+.years b{font-family:Sora;font-size:2.6rem;line-height:1;display:block}
+.years span{font-size:.85rem;opacity:.9}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.check{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.check b{display:block;font-family:Sora;margin-bottom:2px}
+.check span{color:var(--muted);font-size:.9rem}
+
+/* modes */
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.mode{border-radius:var(--radius);padding:40px;position:relative;overflow:hidden;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff}
+.mode img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.mode::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,12,15,.92),rgba(12,12,15,.25));z-index:0}
+.mode>*:not(img){position:relative;z-index:1}
+.mode h3{font-size:1.6rem;margin-bottom:6px}
+.mode p{color:rgba(255,255,255,.8)}
+
+/* allies */
+.allies{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+.allies div{border:1px solid var(--line);border-radius:14px;height:84px;width:180px;display:grid;place-items:center;padding:14px 24px;transition:.3s;background:#fff}
+.allies img{max-height:48px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.3s}
+.allies div:hover img{filter:none;opacity:1}
+
+/* testimonials */
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.testi{background:var(--soft);border-radius:var(--radius);padding:36px;display:flex;flex-direction:column}
+.testi .q{font-family:Sora;font-size:3.6rem;color:var(--mag);line-height:.6;height:28px}
+.testi p{font-size:1.06rem;margin:12px 0 26px;flex:1}
+.who{display:flex;gap:14px;align-items:center}
+.who img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.who b{display:block;font-family:Sora}
+.who span{color:var(--muted);font-size:.88rem}
+
+/* faq */
+.faq{max-width:820px;margin-inline:auto;display:grid;gap:12px}
+details{border:1px solid var(--line);border-radius:14px;padding:0 24px;background:#fff}
+details[open]{border-color:var(--mag)}
+summary{list-style:none;cursor:pointer;padding:22px 0;font-weight:600;font-size:1.04rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;color:var(--mag);transition:.3s;flex:none}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding-bottom:22px;color:var(--muted)}
+
+/* cta */
+.cta{background:var(--black);color:#fff;border-radius:28px;padding:70px 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.cta .o-ring{left:auto;right:-180px;top:-220px;bottom:auto;opacity:.25}
+.cta h2{font-size:clamp(2rem,4.4vw,3rem);position:relative}
+.cta h2 span{color:var(--mag-2)}
+.cta p{color:rgba(255,255,255,.7);margin-top:14px;position:relative}
+.cta .side{display:grid;gap:12px;position:relative}
+.cta .side .btn{width:100%}
+.cta .info{font-size:.9rem;color:rgba(255,255,255,.6);text-align:center}
+
+footer{background:var(--black);color:rgba(255,255,255,.65);padding:70px 0 30px;margin-top:100px;font-size:.94rem}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+footer h4{color:#fff;margin-bottom:14px;font-family:Sora;font-size:1rem}
+footer ul{list-style:none;display:grid;gap:9px}
+footer a:hover{color:var(--mag-2)}
+.social{display:flex;gap:10px;margin-top:18px}
+.social a{width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center}
+.social a:hover{background:var(--mag);border-color:var(--mag);color:#fff}
+.social svg{width:18px;height:18px;fill:currentColor}
+.copy{border-top:1px solid rgba(255,255,255,.1);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:.85rem}
+
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.45)}
+.wa svg{width:32px;height:32px;fill:#fff}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .nav ul,.nav .btn{display:none}
+  .burger{display:block}
+  .mobile-menu{display:block;position:fixed;inset:76px 0 auto 0;background:var(--black);padding:10px 16px 28px;transform:translateY(-130%);transition:.35s;z-index:40}
+  .mobile-menu.open{transform:none}
+  .mobile-menu a{display:block;color:#fff;padding:15px 4px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:500}
+  .mobile-menu .btn{margin-top:18px;width:100%}
+  body.menu-open .burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  body.menu-open .burger span:nth-child(2){opacity:0}
+  body.menu-open .burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .hero-grid{grid-template-columns:1fr;min-height:0}
+  .hero-text{padding:60px 0 50px}
+  .hero-img{margin:0 -16px;height:340px;order:-1}
+  .hero-img::before{background:linear-gradient(0deg,var(--black) 0%,transparent 60%)}
+  .pillars{grid-template-columns:1fr;margin-top:0}
+  .pillar{border-right:0;border-bottom:1px solid var(--line)}
+  .pillar:last-child{border-bottom:0}
+  .svc-grid{grid-template-columns:1fr}
+  .split,.cta{grid-template-columns:1fr}
+  .split{gap:40px}
+  .foot{grid-template-columns:1fr 1fr}
+  .pillars-wrap{padding-top:40px}
+}
+@media (max-width:640px){
+  section{padding:70px 0}
+  .hero-img{height:260px}
+  .hero-ctas .btn{flex:1 1 100%}
+  .hero-badges{gap:22px}
+  .modes,.testi-grid,.checks{grid-template-columns:1fr}
+  .mode{padding:28px;min-height:220px}
+  .testi{padding:28px}
+  .cta{padding:44px 22px}
+  .foot{grid-template-columns:1fr}
+  .allies div{width:calc(50% - 9px);height:72px;padding:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon">✨ Propuesta de rediseño · Vista previa <a href="../">Tesis Dominicanas</a> <a href="../idompa/">Idompa</a></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="logo"><img src="https://othercompany.site/wp-content/uploads/elementor/thumbs/logo-justificado-en-blanco-09-qp4pb290qr8rygtmr0taki0f75lt7mq79jvaq8awyw.png" alt="Other Company"></a>
+    <ul>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Conócenos</a></li>
+      <li><a href="#aliados">Aliados</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+    <a class="btn btn-mag" href="https://wa.link/5g80z6" target="_blank" rel="noopener">Contáctanos</a>
+    <button class="burger" aria-label="Menú" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mm">
+  <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+  <a href="#nosotros" onclick="toggleMenu()">Conócenos</a>
+  <a href="#aliados" onclick="toggleMenu()">Aliados</a>
+  <a href="#faq" onclick="toggleMenu()">Preguntas frecuentes</a>
+  <a class="btn btn-mag" href="https://wa.link/5g80z6" target="_blank" rel="noopener">Contáctanos por WhatsApp</a>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="o-ring"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-text reveal">
+      <span class="kicker">Servicios administrativos · Santo Domingo</span>
+      <h1>Más eficiencia. <span>Más rentabilidad.</span> Menos carga para ti.</h1>
+      <p>Ordenamos la administración de tu empresa — contabilidad, recursos humanos y estructura — para que tú te enfoques en crecer.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-mag" href="https://wa.link/5g80z6" target="_blank" rel="noopener">Solicita una consulta →</a>
+        <a class="btn btn-out" href="#servicios">Ver servicios y precios</a>
+      </div>
+      <div class="hero-badges">
+        <div><b>+8</b>años de experiencia</div>
+        <div><b>3</b>áreas de servicio</div>
+        <div><b>🌎</b>cobertura internacional</div>
+      </div>
+    </div>
+    <div class="hero-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80" alt="Oficina moderna"></div>
+  </div>
+</section>
+
+<div class="wrap pillars-wrap">
+  <div class="pillars reveal">
+    <div class="pillar"><div class="ic">⚖️</div><div><h3>Ética profesional</h3><p>Nuestro estándar número uno en cada proyecto.</p></div></div>
+    <div class="pillar"><div class="ic">🧩</div><div><h3>Servicio integral</h3><p>Una sola firma para tu gestión administrativa.</p></div></div>
+    <div class="pillar"><div class="ic">🤝</div><div><h3>Compromiso real</h3><p>Tu estabilidad empresarial es nuestra meta.</p></div></div>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Servicios</span>
+      <h2>Soluciones claras, con precios transparentes</h2>
+      <p>Elige el servicio que tu empresa necesita hoy. Ajustamos cada propuesta a tu tamaño y a tus metas.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="ic">📊</div>
+        <h3>Gestión Contable</h3>
+        <p>Tus números al día, ordenados y listos para tomar mejores decisiones.</p>
+        <ul><li>Registros y estados financieros</li><li>Cumplimiento fiscal</li><li>Reportes periódicos</li></ul>
+        <div class="price"><div><small>Desde</small><b><sup>USD</sup>300</b></div><a href="https://wa.me/18099747877?text=Hola%2C%20me%20interesa%20Gesti%C3%B3n%20Contable" target="_blank" rel="noopener" aria-label="Solicitar">→</a></div>
+      </div>
+      <div class="svc feat reveal">
+        <span class="pop">MÁS COMPLETO</span>
+        <div class="ic">🏗️</div>
+        <h3>Estructuración Empresarial</h3>
+        <p>Rediseñamos la estructura de tu negocio para que crezca de forma ordenada y rentable.</p>
+        <ul><li>Diagnóstico organizacional</li><li>Procesos y organigrama</li><li>Plan de crecimiento</li></ul>
+        <div class="price"><div><small>Desde</small><b><sup>USD</sup>800</b></div><a href="https://wa.me/18099747877?text=Hola%2C%20me%20interesa%20Estructuraci%C3%B3n%20Empresarial" target="_blank" rel="noopener" aria-label="Solicitar">→</a></div>
+      </div>
+      <div class="svc reveal">
+        <div class="ic">👥</div>
+        <h3>Gestión de Recursos Humanos</h3>
+        <p>Atrae, organiza y retén al talento correcto para tu empresa.</p>
+        <ul><li>Reclutamiento y selección</li><li>Políticas y manuales</li><li>Gestión de nómina</li></ul>
+        <div class="price"><div><small>Desde</small><b><sup>USD</sup>500</b></div><a href="https://wa.me/18099747877?text=Hola%2C%20me%20interesa%20Gesti%C3%B3n%20de%20Recursos%20Humanos" target="_blank" rel="noopener" aria-label="Solicitar">→</a></div>
+      </div>
+    </div>
+    <p class="note">* Precios referenciales. El costo final depende de las necesidades de cada cliente.</p>
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="wrap split">
+    <div class="photo reveal">
+      <img src="https://othercompany.site/wp-content/uploads/2023/12/call-center-team-and-businessman-in-office-for-crm-865EA5H.jpg" alt="Equipo Other Company">
+      <div class="years"><b>+8</b><span>años</span></div>
+    </div>
+    <div class="reveal">
+      <span class="kicker">Conócenos</span>
+      <h2 style="font-size:clamp(2rem,4.2vw,2.9rem);margin:16px 0 14px">De orígenes humildes a aliado de empresas en toda la región</h2>
+      <p style="color:var(--muted);font-size:1.05rem">Acompañamos a nuestros clientes en la búsqueda de estabilidad empresarial con un servicio eficaz, integral y comprometido con su éxito. Nuestra visión: convertir negocios en organizaciones sólidas.</p>
+      <div class="checks">
+        <div class="check"><b>Planificación</b><span>Metas claras y medibles</span></div>
+        <div class="check"><b>Estructuración</b><span>Procesos que funcionan</span></div>
+        <div class="check"><b>Crecimiento</b><span>Escala con orden</span></div>
+        <div class="check"><b>Rentabilidad</b><span>Más resultados, menos costos</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Modalidades</span>
+      <h2>Trabajamos como prefieras</h2>
+    </div>
+    <div class="modes">
+      <div class="mode reveal"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80" alt=""><h3>🏢 Presencial</h3><p>Reuniones en tu empresa en Santo Domingo, Distrito Nacional.</p></div>
+      <div class="mode reveal"><img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=900&q=80" alt=""><h3>💻 Digital</h3><p>Servicio a nivel internacional, según las disposiciones legales de cada país.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="aliados" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="margin-bottom:36px">
+      <span class="kicker">Aliados</span>
+      <h2>Empresas que crecen con nosotros</h2>
+    </div>
+    <div class="allies reveal">
+      <div><img src="https://othercompany.site/wp-content/uploads/2023/01/Logo-de-Vozzit-1024x349.png" alt="Vozzit"></div>
+      <div><img src="https://othercompany.site/wp-content/uploads/2023/01/log_pstv_color_media-1024x349.png" alt="Zume"></div>
+      <div><img src="https://othercompany.site/wp-content/uploads/2023/01/LOGOS-MORLACOLABORATIVA-01-1024x508.png" alt="Morla Colaborativa"></div>
+      <div><img src="https://othercompany.site/wp-content/uploads/2023/03/8.5-x-8.5-1024x686.png" alt="ADOPNIA"></div>
+      <div><img src="https://othercompany.site/wp-content/uploads/2023/03/LOGO-IDOMPA-1-1024x294.png" alt="Idompa"></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Testimonios</span>
+      <h2>Lo que dicen nuestros clientes</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi reveal"><div class="q">“</div><p>Su entrega y compromiso son admirables. Entendieron perfectamente nuestras necesidades y lograron aumentar la eficiencia y rentabilidad de nuestra empresa.</p><div class="who"><img src="https://othercompany.site/wp-content/uploads/2023/12/business-woman-VKBQ9L5.jpg" alt=""><div><b>Laura Martínez</b><span>Cliente</span></div></div></div>
+      <div class="testi reveal"><div class="q">“</div><p>Su enfoque centrado en el cliente y su capacidad para entender necesidades empresariales complejas marcan la diferencia.</p><div class="who"><img src="https://othercompany.site/wp-content/uploads/2023/12/confident-happy-and-smiling-business-woman-standin-WQ254GW.jpg" alt=""><div><b>Ana Sánchez</b><span>Cliente</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="kicker">Preguntas frecuentes</span>
+      <h2>Resolvemos tus dudas</h2>
+    </div>
+    <div class="faq reveal">
+      <details open><summary>¿Qué es Other Company?</summary><p>Somos una empresa dedicada a brindar servicios administrativos en Santo Domingo, enfocada en la planificación, estructuración y crecimiento de negocios.</p></details>
+      <details><summary>¿Cuáles son sus servicios?</summary><p>Estructuración empresarial, gestión contable y gestión de recursos humanos.</p></details>
+      <details><summary>¿Cuánto cuestan?</summary><p>Gestión contable desde USD 300, gestión de RR.HH. desde USD 500 y estructuración empresarial desde USD 800. El precio final depende de las necesidades de cada cliente.</p></details>
+      <details><summary>¿Trabajan de forma presencial o digital?</summary><p>Ambas. Tú eliges la modalidad que mejor se adapte a tu empresa.</p></details>
+      <details><summary>¿Dónde ofrecen sus servicios?</summary><p>Estamos en Santo Domingo, Distrito Nacional, y gracias a la virtualidad atendemos a nivel internacional, según las leyes de cada país.</p></details>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="o-ring"></div>
+      <div>
+        <h2>Haz que tu empresa funcione <span>como debe.</span></h2>
+        <p>Cuéntanos tu situación y te proponemos un plan a la medida, sin compromiso.</p>
+      </div>
+      <div class="side">
+        <a class="btn btn-mag" href="https://wa.link/5g80z6" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        <a class="btn btn-out" href="tel:+18099747877">Llamar al (809) 974-7877</a>
+        <span class="info">Lunes a viernes · 8:00 AM – 5:00 PM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="https://othercompany.site/wp-content/uploads/elementor/thumbs/logo-justificado-en-blanco-09-qp4pb290qr8rygtmr0taki0f75lt7mq79jvaq8awyw.png" alt="Other Company" style="height:42px;margin-bottom:14px">
+        <p>Aumentando la eficiencia y rentabilidad de las empresas dominicanas.</p>
+        <div class="social">
+          <a href="https://www.instagram.com/othercompany.do" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zM17.3 5.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zM12 2c-2.7 0-3 0-4.1.1C5.2 2.2 3.3 4 3.1 6.8 3 8 3 8.3 3 12s0 4 .1 5.2c.2 2.8 2 4.6 4.8 4.7 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c2.8-.1 4.6-2 4.8-4.7.1-1.2.1-1.5.1-5.2s0-4-.1-5.2c-.2-2.7-2-4.6-4.8-4.7C15 2 14.7 2 12 2z"/></svg></a>
+          <a href="https://www.facebook.com/Othercompanydo" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+          <a href="https://www.linkedin.com/company/80499141" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9V21H9z"/></svg></a>
+          <a href="https://www.youtube.com/@othercompanydo2224" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 00-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 001 7.2 31 31 0 00.5 12 31 31 0 001 16.8a3 3 0 002.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 002.1-2.1 31 31 0 00.5-4.8 31 31 0 00-.5-4.8zM9.8 15V9l5.8 3z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Servicios</h4><ul><li><a href="#servicios">Gestión Contable</a></li><li><a href="#servicios">Estructuración Empresarial</a></li><li><a href="#servicios">Recursos Humanos</a></li></ul></div>
+      <div><h4>Empresa</h4><ul><li><a href="#nosotros">Conócenos</a></li><li><a href="#aliados">Aliados</a></li><li><a href="#">Galería</a></li><li><a href="#">Blog</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li>📍 Santo Domingo, D.N.</li><li><a href="tel:+18099747877">📞 (809) 974-7877</a></li><li>🕗 Lun – Vie · 8:00 AM – 5:00 PM</li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 Other Company. Todos los derechos reservados.</span><span>Propuesta de diseño</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.link/5g80z6" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg></a>
+
+<script>
+function toggleMenu(){document.getElementById('mm').classList.toggle('open');document.body.classList.toggle('menu-open')}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
